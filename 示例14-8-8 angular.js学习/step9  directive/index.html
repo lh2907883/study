@@ -1,0 +1,49 @@
+<!DOCTYPE HTML>
+<html lang="zh-cn" ng-app="app1">
+<head>
+    <meta charset="UTF-8">
+    <title>filter</title>
+</head>
+<body>
+<div ng-controller='ctrl'>
+    <my-dirt1 />
+</div>
+
+<script type="text/javascript" src="../lib/angular-1.2.2/angular.min.js"></script>
+<script type="text/javascript">
+    angular.module("app1", [])
+        .directive("myDirt1", function(){
+            return {
+//                scope: {
+//                    tag1: "="
+//                },
+                replace: true,
+                template: '\
+                    <div>\
+                        <input ng-model="tag1" />\
+                         <div ng-repeat="item in list" style="width:100px;height:100px;border:1px solid #333;">{{tag1}}</div>\
+                    </div>\
+                ',
+                restrict: 'ECA',
+//                compile: function(element, attrs, transclude){
+//                    element.css({borderWidth: '10px', float: 'left'});
+//                },
+                link: function(scope, iElement, iAttrs){
+                    iElement.on('click', function(){
+                        scope.tag1 += '1';
+                    });
+                }
+            }
+        })
+        .controller("ctrl", function($scope){
+            $scope.list = [
+                {id: 1, name: 'a1'},
+                {id: 2, name: 'a2'},
+                {id: 3, name: 'a3'},
+                {id: 4, name: 'a4'}
+            ];
+            $scope.name = "12";
+        });
+</script>
+</body>
+</html>

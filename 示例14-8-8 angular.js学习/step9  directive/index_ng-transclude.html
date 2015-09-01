@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html ng-app='app'>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+</head>
+<body ng-init="t1='123'">
+    <hello t1="t1">
+        <br/>
+        <span>原始的内容，{{t1}}</span>
+        <br/>
+        <span>还会在这里。</span>
+    </hello>
+    <hello>
+    </hello>
+</body>
+
+<script type="text/javascript" src="../lib/angular-1.2.2/angular.min.js"></script>
+<script type="text/javascript">
+    var appModule = angular.module('app', []);
+    appModule.directive('hello', function() {
+        //"transclude:true"配合"ng-transclude"使用
+        //模板里面指定的ng-transclude是一个标记,指令dom的子dom元素会copy到这个模板里面指定ng-transclude的dom下面,
+        //然后这些copy进去的dom所用的作用域还是指令dom的父作用域... 所以"原始的内容，{{t1}}"这里的t1会使用ng-init="t1='123'",就是123;而haha {{t1}}的t1和ng-transclude没有什么关系,就是用的指令作用域
+        return {
+            //scope:{},
+            scope:{t1:"@"},
+            replace:true,
+            restrict: 'E',
+            template: '<div>Hi there <span ng-transclude></span><span>haha {{t1}}</span></div>',
+            transclude: true
+        };
+    });
+</script>
+</html>

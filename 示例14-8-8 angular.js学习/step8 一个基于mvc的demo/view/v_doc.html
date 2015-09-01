@@ -1,0 +1,68 @@
+<div style="height:100%;">
+    <div class="pull-left" style="width:100%;"><!--导航栏-->
+        <h4 class="breadcrumbs">
+            <span class="glyphicon glyphicon-home"></span>
+            <span>&nbsp;当前位置:&nbsp;&nbsp;密标管理 > 预定密</span>
+        </h4>
+        <div class="form-inline" style="margin:10px 0;">
+            <div class="form-group">
+                <span>路径选择:</span>
+                <div style="width:350px;display:inline-block;vertical-align:middle;">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="请输入路径" />
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" type="button">
+                                <span class="glyphicon glyphicon-folder-open"></span>
+                            </button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="checkbox">
+                <label><input type="checkbox">包含子文件夹</label>
+            </div>
+        </div>
+    </div>
+    <div style="height:100%;padding-top:86px;">
+        <!--<div style="height:100%;width:500px;float:right;">detail</div> &lt;!&ndash;右侧详情栏&ndash;&gt;-->
+        <div style="height:100%;overflow-y:auto;"><!--主布局区域-->
+
+            <table st-table="rowCollection" class="table table-striped" style="margin-bottom:0;">
+                <thead>
+                    <tr>
+                        <th st-sort="firstName">first name</th>
+                        <th st-sort="lastName">last name</th>
+                        <th st-sort="birthDate">birth date</th>
+                        <th st-sort="balance">balance</th>
+                        <th>email</th>
+                    </tr>
+                    <!--<tr>-->
+                        <!--<th>-->
+                            <!--<input st-search="'firstName'" placeholder="search for firstname" class="input-sm form-control" type="search"/>-->
+                        <!--</th>-->
+                        <!--<th colspan="4">-->
+                            <!--<input st-search placeholder="global search" class="input-sm form-control" type="search"/>-->
+                        <!--</th>-->
+                    <!--</tr>-->
+                </thead>
+                <tbody>
+                    <tr ng-repeat="row in rowCollection" style="height:30px;">
+                        <td>{{row.firstName | uppercase}}</td>
+                        <td>{{row.lastName}}</td>
+                        <td>{{row.birthDate | date}}</td>
+                        <td>{{row.balance | currency}}</td>
+                        <td><a ng-href="mailto:{{row.email}}">email</a></td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="5" class="text-center">
+                            <div st-pagination="" st-items-by-page="itemsByPage" st-displayed-pages="7"></div>
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,249 @@
+.u-bj{
+    position: absolute;
+    z-index: 1001;
+    top: 40%;
+    left: 42%;
+}
+.u-index{
+    width: 84%;
+    height: 87%;
+    border: 1px solid #afafaf;
+    overflow: hidden;
+    position: absolute;
+    z-index: 1000;
+    left: 7%;
+    top: 5%;
+    border-top-left-radius: 8px;
+    border-top-right-radius:8px;
+    border-bottom-left-radius: 2px;
+    border-bottom-right-radius: 2px;
+    display: none;
+    _height:600px;
+}
+.u-header{
+    width: 100%;
+    height: 50px;
+     background: url("../img/bbb.jpg");
+
+}
+.u-conten{
+    width: 100%;
+    height: 91%;
+    overflow: auto;
+	     background: url("../img/bbb2.jpg");
+}
+.u-btn{
+    background-color:#afafaf;
+    cursor: pointer;
+	color : #fff;
+	border-radius: 3px;
+}
+.u-header-btn{
+    height: 35px;
+    width: 100px;
+    margin-top: 7px;
+    margin-left: 5px;
+    float: left;
+    background-color: #c5c5c5;
+}
+.u-header-btn1{
+    margin-left: 5%;
+    background-color: #DE7E63;
+    color: #fff;
+}
+.u-header-btn1 input{
+    float: left;
+}
+.u-header-btn i{
+    height: 25px;
+    width: 25px;
+    float: left;
+    margin: 5px;
+    margin-right: 0px;
+}
+.u-header-btn p{
+    margin: 0px;
+    height: 35px;
+    width: auto;
+    float: left;
+    font-size: 14px;
+    line-height: 35px;
+}
+.u-header-btn2{
+    width: 30px;
+    height: 30px;
+    float: right;
+    margin-top: 7px;
+    margin-right: 10px;
+    background: url("../img/close.png") 7px 7px no-repeat;
+}
+.u-header-btn3{
+    width: 30px;
+    height: 30px;
+    float: right;
+    margin-top: 7px;
+    margin-right: 40px;
+    background:url("../img/glyphicons-halflings.png") -232px 8px no-repeat;
+}
+
+.u-i1{
+    background: url("../img/glyphicons-halflings.png") -400px -91px no-repeat;
+}
+.u-i2{
+    background: url("../img/up.png") 4px 4px no-repeat;
+}
+.u-i3{
+    background: url("../img/cancel.png") 2px 3px no-repeat;
+}
+.u-i4{
+    background: url("../img/del.png") 4px 4px no-repeat;
+}
+.u-wenJ{
+    clear: both;
+    height: 45px;
+    width: 100%;
+    border-bottom: 1px solid #afafaf;
+}
+.u-wenJ-cen{
+    text-align: center;
+    line-height: 45px;
+    height: 100%;
+    float: left;
+    overflow: hidden;
+    font-size: 13px;
+}
+.u-wenJ-cen p{
+    margin: 0px;
+    text-align: center;
+    line-height: 45px;
+    height: 100%;
+}
+.u-wenJ-ids{
+    width: 5%;
+}
+.u-wenJ-name{
+    width: 20%;
+}
+.u-wenJ-bs{
+    width: 15%;
+}
+.u-wenJ-loca{
+    width: 15%;
+}
+.u-wenJ-sta{
+    width: 25%;
+}
+.u-wenJ-sta div{
+    float: left;
+}
+.u-wenJ-sta p{
+    margin: 0px;
+    float: left;
+    margin-left: 5%;
+}
+.u-wenJ-ope{
+    width: 20%;
+}
+
+.u-some{
+    display: none;
+}
+.u-caozuo1{
+    height: 30px;
+    width: 30px;
+    float: left;
+    margin: 7px;
+    background: url("../img/up.png") 6px 6px no-repeat;
+    position: relative;
+    left: 35%;
+}
+.u-caozuo-z{
+    background: url("../img/glyphicons-halflings.png") -256px -65px no-repeat;
+}
+.u-caozuo-b{
+    background: url("../img/glyphicons-halflings.png") -279px -65px no-repeat;
+}
+.u-caozuo-ok{
+    background: url("../img/glyphicons-halflings.png") -281px 7px no-repeat;
+}
+.u-caozuo2{
+    height: 30px;
+    width: 30px;
+    float: left;
+    margin: 7px;
+    background: url("../img/cancel.png") 4px 5px no-repeat;
+    position: relative;
+    left: 42%;
+}
+.u-jindu{
+    padding: 0px;
+    margin-left: 20%;
+    width: 180px;
+    height: 13px;
+    border: 1px solid #afafaf;
+    margin-top: 14px;
+    border-radius: 4px;
+    overflow: hidden;
+    position: relative;
+}
+.u-jinduing{
+    margin: 0px;
+    height: 100%;
+    width:2px;
+    background:url("../img/jd.png");
+}
+.u-jindu p{
+    margin: 0px;
+    padding: 0px;
+    width: 20px;
+    height: 10px;
+    position: absolute;
+    right: 78px;
+    top: -15px;
+    font-size: 8px;
+    z-index: 1500;
+}
+.u-alertb{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    background-color: #afafaf;
+    opacity: 0.70;
+    z-index: 3000;
+    display: none;
+}
+.u-alertc{
+    width: 300px;
+    height:240px;
+    border: 1px solid #000;
+    background-color: #fff;
+    z-index: 3001;
+    position: absolute;
+    top: 25%;
+    left: 35%;
+    border-radius:10px ;
+    overflow: hidden;
+    display: none;
+}
+.u-alertc-1{
+    width: 100%;
+    height: 190px;
+    line-height: 190px;
+    font-size: 16px;
+    text-align: center;
+    border-bottom: 1px solid #000;
+}
+.u-alertc-2{
+    width: 100%;
+    height: 40px;
+}
+.u-alertc-2 input{
+    margin-top: 7px;
+    margin-right: 28px;
+    float: right;
+    height: 35px;
+    width: 100px;
+    cursor: pointer;
+}

@@ -1,0 +1,36 @@
+<!DOCTYPE HTML>
+<html lang="zh-cn" ng-app="app1">
+<head>
+    <meta charset="UTF-8">
+    <title>filter</title>
+</head>
+<body>
+<div ng-controller='ctrl'>
+    <p>下面有一个div标签,请自行设置它的style</p>
+    <input type="text" ng-model="style" style="width:700px;" />
+    <div ng-style="style | toStyleObj:1:2:3"></div>
+</div>
+<script type="text/javascript" src="../lib/angular-1.2.2/angular.min.js"></script>
+<script type="text/javascript">
+    angular.module("app1", [])
+        //filter类似一个数据转换器
+        .filter("toStyleObj", function(){
+            //filter参数:input代表原始数据;
+            //arg1,arg2,arg3...分别代表 | toStyleObj:1:2:3 里面的:1,:2,:3... ;
+            return function(input,arg1,arg2,arg3) {
+                var result = {};
+                try {
+                    result = eval("(" + input + ")");
+                    //result = angular.toJSON(input);
+                    //console.log(result);
+                }
+                catch (e) {}
+                return result;
+            }
+        })
+        .controller("ctrl", function($scope){
+            $scope.style="{width:'100px',height:'100px','background-color':'#11cccc'}";
+        });
+</script>
+</body>
+</html>

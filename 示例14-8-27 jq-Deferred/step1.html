@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script type="text/javascript" src="js/lib/jquery.js"></script>
+</head>
+<body style="background-color: gray;">
+    <script type="text/javascript">
+        var step1 = function(){
+            window.setTimeout(function(){
+                console.log("step1 is completed.");
+            }, 1000)
+        };
+        $.when(step1()).done(function(){
+            console.log("done.");
+        }).fail(function(){
+            console.log("fail.");
+        });
+
+        //这个done会立刻执行,解决办法见step2.html
+    </script>
+</body>
+</html>

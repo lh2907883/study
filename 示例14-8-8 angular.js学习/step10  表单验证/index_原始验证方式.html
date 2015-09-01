@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Angular JS Forms</title>
+    <style>
+        table, th , td {
+            border: 1px solid grey;
+            border-collapse: collapse;
+            padding: 5px;
+        }
+        table tr:nth-child(odd) {
+            background-color: #f2f2f2;
+        }
+        table tr:nth-child(even) {
+            background-color: #ffffff;
+        }
+    </style>
+</head>
+<body>
+<h2>AngularJS Sample Application</h2>
+<div ng-app="" ng-controller="studentController">
+    <form name="studentForm" novalidate>
+        <table border="0">
+            <tr>
+                <td>Enter first name:</td>
+                <td>
+                    <input name="firstname" type="text" ng-model="firstName" required>
+                    <span style="color:red" ng-show="studentForm.firstname.$dirty && studentForm.firstname.$invalid">
+                        <span ng-show="studentForm.firstname.$error.required">First Name is required.</span>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td>Enter last name: </td>
+                <td>
+                    <input name="lastname"  type="text" ng-model="lastName" required>
+                    <span style="color:red" ng-show="studentForm.lastname.$dirty && studentForm.lastname.$invalid">
+                        <span ng-show="studentForm.lastname.$error.required">Last Name is required.</span>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td>Email: </td>
+                <td>
+                    <input name="email" type="email" ng-model="email" length="100" required>
+                    <span style="color:red" ng-show="studentForm.email.$dirty && studentForm.email.$invalid">
+                        <span ng-show="studentForm.email.$error.required">Email is required.</span>
+                        <span ng-show="studentForm.email.$error.email">Invalid email address.</span>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <button ng-click="reset()">Reset</button>
+                </td>
+                <td>
+                    <button
+                            ng-disabled="studentForm.firstname.$dirty && studentForm.firstname.$invalid ||
+                          studentForm.lastname.$dirty && studentForm.lastname.$invalid ||
+                          studentForm.email.$dirty && studentForm.email.$invalid"
+                            ng-click="submit()">Submit</button>
+                </td>
+            </tr>
+        </table>
+    </form>
+</div>
+<script type="text/javascript" src="../lib/angular-1.2.2/angular.min.js"></script>
+<script>
+    /*
+    * formName.inputFieldName.$pristine;    布尔值属性，表示用户是否修改了表单。如果为ture，表示没有修改过；false表示修改过
+    * formName.inputFieldName.$dirty;       布尔型属性，当且仅当用户实际已经修改的表单。不管表单是否通过验证
+    * formName.inputFieldName.$valid;       布尔型属性，它指示表单是否已通过验证。如果表单当前通过验证，他将为true
+    * formName.inputFieldName.$invalid;     布尔型属性，它指示表单是否没有通过验证。如果表单当前未通过验证，他将为true
+    * */
+    function studentController($scope) {
+        $scope.reset = function(){
+            $scope.firstName = "Mahesh";
+            $scope.lastName = "Parashar";
+            $scope.email = "MaheshParashar@yiibai.com";
+        }
+        $scope.reset();
+    }
+</script>
+</body>
+</html>

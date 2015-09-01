@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <script type="application/javascript">
+        function init(protoObj){
+            var f = function(){};
+            f.prototype = protoObj;
+            return new f();
+        };
+        var Class1 = {
+            name:"default",
+            showName: function(){
+                alert("Class1's name is: " + this.name);
+            }
+        };
+        //实例化Class1
+        var c1 = init(Class1);
+        c1.showName();
+
+        //Class2继承Class1
+        var Class2 = init(Class1);
+        Class2.showName = function(){
+            alert("Class2's name is: " + this.name);
+        };
+        //实例化Class2
+        var c2 = init(Class2);
+        c2.showName();
+
+        //Class3继承Class2
+        var Class3 = init(Class2);
+        Class3.setName = function(name){
+            this.name = name;
+        }
+        //实例化Class3
+        var c3 = init(Class3);
+        c3.setName("dcs");
+        c3.showName();
+
+    </script>
+</body>
+</html>

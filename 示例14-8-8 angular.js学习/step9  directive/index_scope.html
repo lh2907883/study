@@ -1,0 +1,101 @@
+<!DOCTYPE HTML>
+<html lang="zh-cn" ng-app="app1">
+<head>
+    <meta charset="UTF-8">
+    <title>filter</title>
+</head>
+<body>
+<div ng-controller='ctrl'>
+    <input text="button" ng-click="fun1();" />
+    <input type="text" ng-module="text"/>
+    <my-dirt1 ng-repeat="item in list"></my-dirt1>
+    <div style="clear:both;"></div>
+
+    <my-dirt2 text></my-dirt2>
+    <div my-dirt3 text="help"></div>
+    <div my-dirt4 text="help"></div>
+</div>
+<script type="text/javascript" src="../lib/angular-1.2.2/angular.min.js"></script>
+<script type="text/javascript">
+    angular.module("app1", [])
+        .directive("myDirt1", function () {
+            //compile只调用一次（做操作dom的事），post在每个实例生成的时候调用（会调用多次）
+            return {
+                replace: true,
+                template: '<div style="width:100px;height:100px;border:1px solid #333;">{{item.name}}</div>',
+                restrict: 'E',
+                compile: function (tElement) {
+                    tElement.css({ borderWidth: '10px', float: 'left' });
+                    console.log('compile');
+                    return {
+                        post: function (scope, iElement, iAttrs) {
+                            console.log('post-link');
+                            iElement.on('click', function () {
+                                scope.tag1 += '1';
+                                scope.$apply();
+                            });
+                        }
+                    };
+                }
+            }
+        })
+        .directive("myDirt2", function () {
+            return {
+                scope:{
+                    //@表示单向绑定，取dom节点上的text属性的值，只能处理值类型数据
+                    text: '@'
+                },
+                replace: true,
+                template: '<div><input type="text" ng-model="text" /><span>{{text}}</span></div>',
+                restrict: 'E'
+            }
+        })
+        .directive("myDirt3", function () {
+            return {
+                scope:{
+                    //=表示双向绑定，也是取dom节点上的text属性的值，text属性赋值写法和ng-model类似（不能写表达式），可以处理引用类型的数据
+                    text: '='
+                },
+                replace: true,
+                template: '<div><input type="text" ng-model="text.name" /><div></div></div>',
+                restrict: 'EA',
+                link: function(scope, iElement, iAttrs){
+                    iElement.on('click', function(){
+                        alert(scope.text);
+                    });
+                }
+            }
+        })
+        .directive("myDirt4", function () {
+            return {
+                //设置为true表示scope会设置为指令dom所在的父作用域（scope）的一个浅拷贝（不是深拷贝）
+                scope:true,
+                replace: true,
+                template: '<div><input type="text" ng-model="text" /><div></div></div>',
+                restrict: 'EA',
+                link: function(scope, iElement, iAttrs){
+                    iElement.on('click', function(){
+                        alert(scope.text);
+                    });
+                }
+            }
+        })
+        .controller("ctrl", function ($scope) {
+            $scope.list = [
+                { id: 1, name: 'a1' },
+                { id: 2, name: 'a2' },
+                { id: 3, name: 'a3' },
+                { id: 4, name: 'a4' }
+            ];
+            $scope.help = {
+                name: "123"
+            };
+            $scope.text = "aaa";
+            $scope.fun1 = function(){
+                $scope;
+                debugger;
+            };
+        });
+</script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script type="text/javascript" src="js/lib/jquery.js"></script>
+</head>
+<body style="background-color: gray;">
+    <script type="text/javascript">
+        //获取一个延迟变量
+        var dtd = $.Deferred();
+        var step1 = function(dtd){
+            window.setTimeout(function(){
+                console.log("step1 is completed.");
+                //通知异步操作完成
+                dtd.resolve();  //resolve通知后会调用done
+                //dtd.reject(); //reject通知后会调用fail
+            }, 1000);
+            //必须返回Deferred对象
+            return dtd;
+        };
+        $.when(step1(dtd)).done(function(){
+            console.log("done.");
+        }).fail(function(){
+            console.log("fail.");
+        });
+
+        //dtd对象是全局的,这样发起通知的方法(dtd.resolve和dtd.reject)可以在任意地方调用,解决见step3.html
+    </script>
+</body>
+</html>

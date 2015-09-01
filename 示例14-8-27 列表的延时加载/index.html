@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script type="text/javascript" src="js/lib/jquery.js"></script>
+    <script type="text/javascript" src="js/lib/lazyLoading.js"></script>
+    <style>
+        *{margin:0;padding:0;}
+    </style>
+</head>
+<body>
+    <div id="root" style="margin:0 auto;width:500px;height:300px;border:10px solid #aa7700;overflow:auto;padding: 10px;">
+        <!--<div style="margin:10px;width:100px;height:100px;background-color:gray;float:left;"></div>-->
+    </div>
+    <button>show</button>
+    <script type="text/javascript">
+        var n = 10;
+        for(var i=0; i<n; i++){
+            $("#root").append('<div style="margin:10px;width:100px;height:100px;background-color:gray;float:left;">'+i+'</div>');
+        }
+        new scrollLazyLoading({
+            target: $("#root"),
+            loadCallback:function(e){
+                window.setTimeout(function(){
+                    var n = 10;
+                    for(var i=0; i<n; i++){
+                        $("#root").append('<div style="margin:10px;width:100px;height:100px;background-color:gray;float:left;">'+i+'</div>');
+                    }
+                    e.notify(true);
+                },200);
+            }
+        });
+
+    </script>
+</body>
+</html>

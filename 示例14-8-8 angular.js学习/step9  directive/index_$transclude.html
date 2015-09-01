@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html ng-app='myApp'>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+</head>
+<body>
+    <my-link value="http://www.baidu.com">百度</my-link>
+    <!--<div my-link value="http://www.google.com">谷歌</div>-->
+
+    <input type='text' placeholder="input {{$index + 1}}" ng-model='ctrl.someModel' duplicate="5" />
+</body>
+
+<script type="text/javascript" src="../lib/angular-1.2.2/angular.min.js"></script>
+<script type="text/javascript">
+    angular.module('myApp',[])
+        .directive('myLink', function () {
+            return {
+                restrict: 'EA',
+                transclude: true, //必须设置为true或者'element',否则$transclude不起作用
+                //$transclude可以存在于controller
+                controller: function ($scope, $element,$attrs,$transclude) {
+                    //神奇的$transclude,官方把它叫做"Transclude链接器函数",
+                    //他的形参是(scope, linkFn), scope是可选的, 这里不传递scope
+                    //linkFn的参数clone就是当前element的一个副本,然后在这个函数里面可以对当前element做处理, 这里就是创建一个a标签放到当前element里面
+                    $transclude(function (clone) {
+                        var a = angular.element('<a>');
+                        a.attr('href', $attrs.value);
+                        a.text(clone.text());
+                        $element.append(a);
+                    });
+                }
+            };
+        })
+        .directive('duplicate', function(){
+            return {
+                transclude: 'element', //如果设置为'element',那么生成的其实是一行注释,而不是指令所在的dom元素
+                priority: 1000,
+                //$transclude可以存在于link函数
+                link: function(scope, el, attrs, ctrl, transclude){
+                    var times = parseInt(attrs.duplicate, 10);
+                    var previous = el;
+                    var childScope;
+                    //这条复制指令的运行方式是将每一个”副本”插入到上一个”副本”的后面，第一个”副本”则是插入到注释后面。
+                    for(var i = 0; i < times; i += 1){
+                        childScope = scope.$new();
+                        childScope.$index = i;
+                        //这里传递了scope,那么在linkFn里面的clone的作用于就是childScope了, 模仿这种做法,可以实现ng-repeat,ng-view的功能
+                        transclude(childScope, function(clone){
+                            previous.after(clone);
+                            previous = clone;
+                        });
+                    }
+                }
+            }
+        });
+</script>
+</html>

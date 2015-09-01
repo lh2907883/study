@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html ng-app="">
+<head>
+    <meta charset="utf-8">
+</head>
+<body>
+
+<div ng-init="p={a:1,b:2};disabled=false;show=true" ng-controller="ctrl">
+    <p>在输入框中尝试输入：</p>
+    <p ng-bind="p.a + p.b"></p> <!--ng-bind和{{}}类似-->
+    <p>姓名：<input type="text" ng-model="name"></p> <!--ng-model为表单元素提供双向绑定-->
+    <p ng-bind="name"></p>
+    <ul>
+        <li ng-repeat="x in list | filter:filt | orderBy:'name'"> <!--ng-repeat处理循环, | filter:filt 可以对list做筛选filt为筛选方法, | orderBy:'name'表示对name属性排序,如何倒序有待研究 | uppercase 是大写转换-->
+            {{ (x.name | uppercase) + ', ' + x.name }}
+        </li>
+    </ul>
+
+    <p><input type="checkbox" ng-model="disabled" />只读 {{disabled}}  <input type="checkbox" ng-model="show" />显示 {{show}}</p>
+    <input type="text" ng-disabled="disabled" ng-show="show" ng-model="pageName" /> <!--ng-disabled为true绑定disabled属性,ng-show为false绑定.ng-hide(就是隐藏)-->
+
+    <input type="button" ng-click="includePage();" value="includePage();" /> <!--ng-click绑定click事件-->
+    <div ng-include="innerPage"> <!--ng-include可以是一个相对于本文件的html文件路径,作用就是读取这个文件的dom信息然后插入到标签中,并且这个innerPage可以变化,路径文件是会缓存的,不会反复读取相同的资源-->
+
+    </div>
+</div>
+
+<script type="text/javascript" src="../lib/angular-1.2.2/angular.min.js"></script>
+<script type="text/javascript">
+    function ctrl($scope){
+        $scope.list = [{id:0,name:'dcs'},
+            {id:1,name:'alex'},
+            {id:2,name:'spardacese'},
+            {id:3,name:'tcwslsptjq'},
+            {id:4,name:'superman'},
+            {id:5,name:'azdly'}];
+        $scope.filt = function(item){
+            return (!$scope.name) || item.name.indexOf($scope.name) != -1;
+        };
+        window.setTimeout(function(){
+            $scope.list.push({id:6,name:'fuck'});
+            //todo:怎么通知界面刷新呢?? 如下:
+            $scope.$apply("list");
+        },2000);
+
+        $scope.innerPage = "demo1.html";
+        $scope.includePage = function(){
+            $scope.innerPage = $scope.pageName;
+        }
+    }
+</script>
+
+</body>
+</html>

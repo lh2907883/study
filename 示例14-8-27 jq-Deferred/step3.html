@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script type="text/javascript" src="js/lib/jquery.js"></script>
+</head>
+<body style="background-color: gray;">
+    <script type="text/javascript">
+        var step1 = function(){
+            //获取一个延迟局部变量
+            var dtd = $.Deferred();
+            window.setTimeout(function(){
+                console.log("step1 is completed.");
+                dtd.resolve();
+            }, 1000);
+            //通过promise方法返回的Deferred对象可以保证不能调用发起通知的方法(resolve和reject)
+            return dtd.promise();
+        };
+        var dp = step1();
+        $.when(dp).done(function(){
+            console.log("done.");
+        }).fail(function(){
+            console.log("fail.");
+        });
+        //这样调用是无效的
+        dp.resolve();
+
+    </script>
+</body>
+</html>

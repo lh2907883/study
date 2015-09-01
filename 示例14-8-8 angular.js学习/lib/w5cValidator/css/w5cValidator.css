@@ -1,0 +1,25 @@
+/*依赖bootstrap样式*/
+.w5c-form input:focus:invalid:focus, .w5c-form textarea:focus:invalid:focus, .w5c-form select:focus:invalid:focus {
+    border-color: rgba(82, 168, 236, 0.8);
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(82, 168, 236, 0.6);
+    color: #000000;
+    outline: 0 none;
+}
+.w5c-form input.error:invalid, .w5c-form textarea.error:invalid, .w5c-form select.error:invalid {
+    border-color: #b94a48;
+    box-shadow: 0 0 6px #f8b9b7;
+    -webkit-box-shadow : 0 0 6px #f8b9b7;
+    -moz-box-shadow    : 0 0 6px #f8b9b7;
+}
+.w5c-form .dropdown-menu {
+    max-height: 400px;
+    overflow-y: auto;
+}
+.w5c-form .alert {
+    margin-bottom: 0;
+}
+.w5c-form .w5c-error {
+    color: #b94a48;
+    display: block;
+    margin-top: 5px;
+}

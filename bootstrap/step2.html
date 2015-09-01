@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>表单</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 新 Bootstrap 核心 CSS 文件 -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <!-- 可选的Bootstrap主题文件（一般不使用） -->
+    <!--<script src="http://apps.bdimg.com/libs/bootstrap/3.0.3/css/bootstrap-theme.min.css"></script>-->
+    <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+    <script src="js/jquery.js"></script>
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="js/bootstrap.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>垂直表单</h1>
+        <div class="row">
+            <form role="form">
+                <div class="form-group">
+                    <label for="name">名称</label>
+                    <input type="text" class="form-control" id="name"
+                           placeholder="请输入名称">
+                </div>
+                <div class="form-group">
+                    <label for="inputfile">文件输入</label>
+                    <input type="file" id="inputfile">
+                    <p class="help-block">这里是块级帮助文本的实例。</p>
+                </div>
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox"> 请打勾
+                    </label>
+                </div>
+                <button type="submit" class="btn btn-default">提交</button>
+            </form>
+        </div>
+        <h1>内联表单</h1>
+        <div class="row">
+            <form class="form-inline" role="form">
+                <div class="form-group">
+                    <label class="sr-only" for="name">名称</label>
+                    <input type="text" class="form-control" id="name"
+                           placeholder="请输入名称">
+                </div>
+                <div class="form-group">
+                    <label class="sr-only" for="inputfile">文件输入</label>
+                    <input type="file" id="inputfile">
+                </div>
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox"> 请打勾
+                    </label>
+                </div>
+                <button type="submit" class="btn btn-default">提交</button>
+            </form>
+        </div>
+        <h1>水平表单</h1>
+        <div class="row">
+            <form class="form-horizontal" role="form">
+                <div class="form-group">
+                    <label for="firstname" class="col-xs-2 control-label">名字</label>
+                    <div class="col-xs-10">
+                        <input type="text" class="form-control" id="firstname"
+                               placeholder="请输入名字">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="lastname" class="col-xs-2 control-label">姓</label>
+                    <div class="col-xs-10">
+                        <input type="text" class="form-control" id="lastname"
+                               placeholder="请输入姓">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-xs-offset-2 col-xs-10">
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox"> 请记住我
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="namelist" class="col-xs-2 control-label">可多选的选择列表</label>
+                    <div class="col-xs-10">
+                        <select multiple class="form-control" id="namelist">
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-xs-offset-2 col-xs-10">
+                        <button type="submit" class="btn btn-default">登录</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <button type="button" class="btn btn-default btn-primary">
+            <span class="glyphicon glyphicon-heart-empty">hehe</span>
+        </button>
+
+        <br />
+        <ul class="nav nav-pills nav-justified">
+            <li class="active">
+                <a href="#">Home</a>
+            </li>
+            <li><a href="#">SVN</a></li>
+            <li><a href="#">iOS</a></li>
+            <li><a href="#">VB.Net</a></li>
+            <li><a href="#">Java</a></li>
+            <li><a href="#">PHP</a></li>
+        </ul>
+    </div>
+</body>
+</html>

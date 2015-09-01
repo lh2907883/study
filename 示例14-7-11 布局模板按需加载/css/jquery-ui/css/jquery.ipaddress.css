@@ -1,0 +1,9 @@
+
+.ip_octet {
+  border: 0;
+  text-align: center;
+  width: 3em;
+}
+.ip_cidr {
+  width: 1.5em;
+}

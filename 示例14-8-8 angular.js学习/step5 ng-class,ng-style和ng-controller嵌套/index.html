@@ -1,0 +1,67 @@
+<!DOCTYPE HTML>
+<html lang="zh-cn" ng-app="">
+<head>
+    <meta charset="UTF-8">
+    <title>ng-class,ng-style和ng-controller嵌套</title>
+    <style>
+        .selected {
+            background-color: lightgreen;
+        }
+    </style>
+</head>
+<body>
+<div ng-controller='RestaurantTableController'>
+    <!--选中高亮-->
+    <table>
+        <tr ng-repeat='restaurant in directory' ng-click='selectRestaurant($index)'
+                ng-class='{selected: $index==selectedRow}'> <!--$index是ng-repeat指令中item的index, ng-class='{selected:true}'表示应用selected样式,反之就是不应用-->
+            <td>{{restaurant.name}}</td>
+            <td>{{restaurant.cuisine}}</td>
+        </tr>
+    </table>
+    <div>
+        <input type="button" value="set color" ng-click="myStyle={color:'red'}" />
+        <input type="button" value="set background" ng-click="myStyle={'background-color':'blue'}" />
+        <input type="button" value="clear" ng-click="myStyle={}" />
+        <span ng-style="myStyle">test</span>
+        <br />
+        <span ng-style="myStyle1">test</span>
+        <input type="button" ng-click="setRed();" value="setRed" />
+        <br />
+        <input type="text" ng-model="strStyle" />
+        <input type="button" value="setStyle" ng-click="setStyle();" />
+        <div ng-style="dyStyle" style="width:100px;height:100px;background-color:#cccccc;"></div>
+    </div>
+    <div ng-controller='subCtrl'> <!--子控制器可以通过$parent访问父控制器的model-->
+        {{$parent.test}}
+    </div>
+</div>
+<script type="text/javascript" src="../lib/angular-1.2.2/angular.min.js"></script>
+<script type="text/javascript">
+    function RestaurantTableController($scope) {
+        $scope.directory = [{name:'The Handsome Heifer', cuisine:'BBQ'},
+            {name:'Green\'s Green Greens', cuisine:'Salads'},
+            {name:'House of Fine Fish', cuisine:'Seafood'}];
+        $scope.selectRestaurant = function(row) {
+            $scope.selectedRow = row;
+        };
+        $scope.test = "调用父controller的test";
+        $scope.setRed = function(){
+            $scope.myStyle1 = {color:'red'};
+        };
+        $scope.strStyle = "{'border':'10px solid black'}";
+        $scope.setStyle = function(){
+            var result = {};
+            try{
+                result = eval("(" + $scope.strStyle + ")") || {};
+            }
+            catch(e){}
+            $scope.dyStyle = result;
+        }
+    }
+    function subCtrl($scope){
+
+    }
+</script>
+</body>
+</html>

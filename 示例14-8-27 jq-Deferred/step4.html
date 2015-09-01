@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script type="text/javascript" src="js/lib/jquery.js"></script>
+</head>
+<body style="background-color: gray;">
+    <script type="text/javascript">
+        var step1 = function(){
+            var dtd = $.Deferred();
+            window.setTimeout(function(){
+                console.log("step1 is completed.");
+                dtd.resolve();
+            }, 1000);
+            return dtd.promise();
+        };
+        var step2 = function(){
+            var dtd = $.Deferred();
+            window.setTimeout(function(){
+                console.log("step2 is completed.");
+                dtd.resolve();
+            }, 1000);
+            return dtd.promise();
+        };
+        var step3 = function(){
+            var dtd = $.Deferred();
+            window.setTimeout(function(){
+                console.log("step3 is completed.");
+                dtd.resolve();
+            }, 1000);
+            return dtd.promise();
+        };
+        //pipe方法接收一个方法名(这个方法要返回Deferred对象),主要处理方法链的调用
+        var a = step1().pipe(step2).pipe(step3).done(function(){
+            console.log("done.");
+        }).fail(function(){
+            console.log("fail.");
+        });
+
+    </script>
+</body>
+</html>

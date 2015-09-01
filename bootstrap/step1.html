@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>布局和表格</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 新 Bootstrap 核心 CSS 文件 -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <!-- 可选的Bootstrap主题文件（一般不使用） -->
+    <!--<script src="http://apps.bdimg.com/libs/bootstrap/3.0.3/css/bootstrap-theme.min.css"></script>-->
+    <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+    <script src="js/jquery.js"></script>
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="js/bootstrap.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 col-md-offset-4">
+                <div style="width:auto;height:300px;background-color: #303030;">1</div>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                <div style="width:auto;height:100px;background-color: #606060;">2</div>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                <div style="width:auto;height:200px;background-color: #909090;">3</div>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                <div style="width:auto;height:150px;background-color: #C0C0C0;">4</div>
+            </div>
+        </div>
+        <!--
+        <div class="row">
+            <div class="col-xs-3 col-xs-push-9">
+                <div style="width:auto;height:300px;background-color: #303030;">1</div>
+            </div>
+            <div class="col-xs-3 col-xs-pull-3">
+                <div style="width:auto;height:100px;background-color: #606060;">2</div>
+            </div>
+            <div class="col-xs-3 col-xs-push-6">
+                <div style="width:auto;height:200px;background-color: #909090;">3</div>
+            </div>
+            <div class="col-xs-3 col-xs-pull-6">
+                <div style="width:auto;height:150px;background-color: #C0C0C0;">4</div>
+            </div>
+        </div>
+        -->
+        <div class="row">
+            <table class="table table-bordered table-hover table-responsive">
+                <caption>上下文表格布局</caption>
+                <thead>
+                <tr>
+                    <th>产品</th>
+                    <th>付款日期</th>
+                    <th>状态</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr class="active">
+                    <td>产品1</td>
+                    <td>23/11/2013</td>
+                    <td>待发货</td>
+                </tr>
+                <tr class="success">
+                    <td>产品2</td>
+                    <td>10/11/2013</td>
+                    <td>发货中</td>
+                </tr>
+                <tr  class="warning">
+                    <td>产品3</td>
+                    <td>20/10/2013</td>
+                    <td>待确认</td>
+                </tr>
+                <tr  class="danger">
+                    <td>产品4</td>
+                    <td>20/10/2013</td>
+                    <td>已退货</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row" >
+            <div class="col-xs-6 col-sm-3"
+                 style="background-color: #dedef8;
+         box-shadow: inset 1px -1px 1px #444, inset -1px 1px 1px #444;">
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+            </div>
+            <div class="col-xs-6 col-sm-3"
+                 style="background-color: #dedef8;box-shadow:
+         inset 1px -1px 1px #444, inset -1px 1px 1px #444;">
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+                    eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+                    enim ad minim veniam, quis nostrud exercitation ullamco laboris
+                    nisi ut aliquip ex ea commodo consequat.
+                </p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+                    eiusmod tempor incididunt ut.
+                </p>
+            </div>
+
+            <div class="clearfix visible-xs"></div>
+
+            <div class="col-xs-6 col-sm-3"
+                 style="background-color: #dedef8;
+         box-shadow:inset 1px -1px 1px #444, inset -1px 1px 1px #444;">
+                <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                    laboris nisi ut aliquip ex ea commodo consequat.
+                </p>
+            </div>
+            <div class="col-xs-6 col-sm-3"
+                 style="background-color: #dedef8;box-shadow:
+         inset 1px -1px 1px #444, inset -1px 1px 1px #444;">
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+                    eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+                    enim ad minim
+                </p>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

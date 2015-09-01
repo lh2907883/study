@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html ng-app="app1">
+<head>
+<meta charset="utf-8" />
+<script type="text/javascript" src="../lib/jquery-1.11.1.js"></script>
+<script type="text/javascript" src="../lib/angular-1.2.2/angular.min.js"></script>
+</head>
+<body>
+  <div ng-controller="BoxCtrl">
+    <div style="width: 100px; height: 100px; background-color: #cccccc;" >点我</div>
+    <p>{{ w }} x {{ h }}</p>
+    <p>W: <input type="text" ng-model="w" /></p>
+    <p>H: <input type="text" ng-model="h" /></p>
+  </div>
+<script src="js/main.js" type="text/javascript"></script>
+</body>
+</html>
